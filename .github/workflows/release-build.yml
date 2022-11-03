@@ -1,0 +1,34 @@
+on:
+  release:
+    types: [created]
+
+name: Build & release
+jobs:
+  releases-matrix:
+    name: Release Go Binary
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [linux, darwin, freebsd, netbsd, openbsd, windows]
+        goarch: ["386", amd64, arm, arm64]
+        exclude:
+          - goarch: "386"
+            goos: darwin
+          - goarch: arm
+            goos: darwin
+    steps:
+    - uses: actions/checkout@v3
+
+    # build the binaries
+    - uses: wangyoucao577/go-release-action@v1.30
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        goos: ${{ matrix.goos }}
+        goarch: ${{ matrix.goarch }}
+        binary_name: "cert-prune"
+        pre_command: export CGO_ENABLED=0
+        asset_name: cert-prune-${{ matrix.goos }}-${{ matrix.goarch }}
+        extra_files: LICENSE README.md
+        md5sum: false
+        overwrite: true
+        ldflags: -w -s
