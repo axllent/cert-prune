@@ -1,8 +1,10 @@
 # Cert Prune - delete obsolete Let's Encrypt certificates
 
-This is a simple no-frills CLI utility to delete obsolete Let's Encrypt certificate files from your system. Every time certificates are registered or renewed, [certbot](https://certbot.eff.org/) generates new certificates in `/etc/letsencrypt`. It never deletes the old expired ones ([see GitHub issue](https://github.com/certbot/certbot/issues/4635)).
+~~This is a simple no-frills CLI utility to delete obsolete Let's Encrypt certificate files from your system. Every time certificates are registered or renewed, [certbot](https://certbot.eff.org/) generates new certificates in `/etc/letsencrypt`. It never deletes the old expired ones ([see GitHub issue](https://github.com/certbot/certbot/issues/4635)).~~
 
-Whilst the physical storage of these certificates is not the issue (they do not take up much space), over time there can be literally tens of thousands of redundant files left within the folder structure.
+~~Whilst the physical storage of these certificates is not the issue (they do not take up much space), over time there can be literally tens of thousands of redundant files left within the folder structure.~~
+
+**Note: I have decided to archive this project as Cerbot has now implemented a pruning mechanism which means this utility is no longer necessary.**
 
 
 ## Installation
@@ -15,7 +17,7 @@ You can download a download a static binary from the [releases](https://github.c
 
 ```shell
 $ cert-prune -h
-A utility to delete expired Let's Encrypt certficates.
+A utility to delete expired Let's Encrypt certificates.
 
 All unused certificates, and (by default) all csrs & keys older than 60 days are deleted.
 
