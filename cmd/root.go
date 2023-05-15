@@ -21,8 +21,8 @@ var (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "cert-prune [path]",
-	Short: "A utility to delete expired Let's Encrypt certficates",
-	Long: `A utility to delete expired Let's Encrypt certficates.
+	Short: "A utility to delete expired Let's Encrypt certificates",
+	Long: `A utility to delete expired Let's Encrypt certificates.
 
 All unused certificates, and (by default) all csrs & keys older than 60 days are deleted.
 
